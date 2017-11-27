@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My HR: All Jobs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script type="text/javascript">
+function getDetails(){
+	var applnId=document.getElementById("jobApplnNum").value;
+	document.getElementById("getApplnDetails").action="/appManager/applns/"+applnId;
+}
+</script>
+<body>
+	<h1>All Applications!</h1>
+	<table>
+	<tr><td><p th:text="${allapplns}"></p></td></tr>
+	</table>
+	<form method="get" id="getApplnDetails">
+		<p>Enter Job Application Id to view details:<input type="text" id="jobApplnNum" required="required"/></p>
+	</form>
+	<button form="getApplnDetails" type="submit" onclick="getDetails()">Details</button>
+	<table>
+		<tr height="5"/>
+		<tr height="5"/>
+		<tr><td><a href="/home">Home!</a></td><td><a href="/applnHome">Application Home!</a></td></tr>
+	</table>
+</body>
+</html>

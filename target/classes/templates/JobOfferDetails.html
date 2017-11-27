@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My HR: Job Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script th:inline="javascript">
+var applnId;
+var applnStatus;
+function applyToOffer(){
+	var offerId=/*[[${jobOffer.jobOfferId}]]*/;
+	document.getElementById("applyToJob").action="/appManager/applyToJob/"+offerId;
+}
+
+function viewJobApplns(){
+	var offerId=/*[[${jobOffer.jobOfferId}]]*/;
+	document.getElementById("viewJobApplns").action="/appManager/viewApplnsForJob/"+offerId;
+}
+</script>
+<body>
+	<h1>Job Details</h1>
+	<table>
+	<tr><td><label>Job Offer ID</label></td><td><p th:text="${jobOffer.jobOfferId}"></p></td></tr>
+	<tr><td><label>Job Title</label></td><td><p th:text="${jobOffer.jobTitle}"></p></td></tr>
+	<tr><td><label>Start Date</label></td><td><p th:text="${jobOffer.startDate}"></p></td></tr>
+	<tr><td><label>No. of Applications</label></td><td><p th:text="${jobOffer.noOfApplications}"></p></td></tr>
+	<tr/>
+	<tr height="5"/>
+	<tr height="5"/>
+	<tr><td><a href="/jobManager/jobs">Back to all jobs</a></td><td><a href="/jobHome">Jobs Home</a></td></tr>
+	<tr><td><button id="applyToOfferBtn" onclick="applyToOffer()" type="submit" form="applyToJob">Apply to this offer</button></td></tr>
+	<tr><td><button id="viewJobApplnsBtn" onclick="viewJobApplns()" type="submit" form="viewJobApplns">View all applications</button></td></tr>
+	<tr height="5"/>
+	<tr height="5"/>
+	</table>
+	<form method="get" id="applyToJob">
+	</form>
+	<form method="get" id="viewJobApplns">
+	</form>
+	<table>
+		<tr height="5"/>
+		<tr height="5"/>
+		<tr><td><a href="/home">Home!</a></td><td><a href="/jobHome">Jobs Home!</a></td></tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My HR: Create an Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Create Application</h1>
+	<form action="#" th:action="@{/appManager/createApplication}" th:object="${appln}" method="post">
+		<p>Job Offer Id:<input type="text" required="required" th:field="*{jobOfferId}"/></p>
+		<p>Candidate E-mail:<input type="email" required="required" th:field="*{candidateEmail}"/></p>
+		<p>Resume Text:<input type="text" required="required" th:field="*{resumeText}" size="100" height="50"/></p>
+		<p><input type="submit" value="Submit"/>
+		<input type="reset" value="Reset"/></p>
+	</form>
+	<table>
+		<tr height="5"/>
+		<tr height="5"/>
+		<tr><td><a href="/home">Home!</a></td><td><a href="/applnHome">Application Home!</a></td></tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My HR: Job Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script th:inline="javascript">
+var applnId;
+var applnStatus;
+function initUpd(){
+	applnStatus= /*[[${appln.applnStatus}]]*/;
+	applnId=/*[[${appln.applicationId}]]*/;
+	if(applnStatus=='APPLIED'){
+		document.getElementById("applnInvitedBtn").disabled=false;
+		document.getElementById("applnRejectBtn").disabled=false;
+		
+	}else if(applnStatus=='INVITED'){
+		document.getElementById("applnRejectBtn").disabled=false;
+		document.getElementById("applnHiredBtn").disabled=false;
+	}
+}
+function inviteAppln(){
+	document.getElementById("applnUpd").action="/appManager/applns/"+applnId+"/I";
+}
+
+function rejectAppln(){
+	document.getElementById("applnUpd").action="/appManager/applns/"+applnId+"/R";
+}
+
+function hireAppln(){
+	document.getElementById("applnUpd").action="/appManager/applns/"+applnId+"/H";
+}
+</script>
+<body onload="initUpd()">
+	<h1>Job Application Details</h1>
+	<table>
+	<tr><td><label>Job Application ID</label></td><td><p th:text="${appln.applicationId}"></p></td></tr>
+	<tr><td><label>Job Offer ID</label></td><td><p th:text="${appln.offer.jobOfferId}"></p></td></tr>
+	<tr><td><label>Job Title</label></td><td><p th:text="${appln.offer.jobTitle}"></p></td></tr>
+	<tr><td><label>Candidate Email</label></td><td><p th:text="${appln.candidateEmail}"></p></td></tr>
+	<tr><td><label>Resume Text</label></td><td><p th:text="${appln.resumeText}"></p></td></tr>
+	<tr><td><label>Status</label></td><td><p id="appStat1" th:text="${appln.applnStatus}"></p></td></tr>
+	<tr/>
+	<tr><td><a href="/jobManager/jobs">Back to all jobs</a></td><td><a href="/jobHome">Jobs Home</a></td></tr>
+	</table>
+	<button id="applnInvitedBtn" onclick="inviteAppln()" type="submit" form="applnUpd" disabled="disabled">Invite</button>
+	<button id="applnRejectBtn" onclick="rejectAppln()" type="submit" form="applnUpd" disabled="disabled">Reject</button>
+	<button id="applnHiredBtn" onclick="hireAppln()" type="submit" form="applnUpd" disabled="disabled">Hired</button>
+	<form method="get" id="applnUpd">
+	</form>
+	<table>
+		<tr height="5"/>
+		<tr height="5"/>
+		<tr><td><a href="/home">Home!</a></td><td><a href="/applnHome">Application Home!</a></td></tr>
+	</table>
+</body>
+</html>

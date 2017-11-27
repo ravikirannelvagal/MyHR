@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My HR: Create a Job Offer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Create Job Offer</h1>
+	<form action="#" th:action="@{/jobManager/createJobOffer}" th:object="${jobOffer}" method="post">
+		<p>Job Title:<input type="text" th:field="*{jobTitle}"/></p>
+		<p>Start Date:<input type="date" th:field="*{startDateString}"/></p>
+		<p><input type="submit" value="Submit"/>
+		<input type="reset" value="Reset"/></p>
+	</form>
+	<table>
+		<tr height="5"/>
+		<tr height="5"/>
+		<tr><td><a href="/home">Home!</a></td><td><a href="/jobHome">Jobs Home!</a></td></tr>
+	</table>
+</body>
+</html>

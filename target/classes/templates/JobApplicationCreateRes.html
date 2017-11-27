@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My HR: Application Created</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script th:inline="javascript">
+function updateNavLink(){
+	var applnId=/*[[${applnId}]]*/;
+	document.getElementById("aApplnUpdChk").href="/appManager/applns/"+applnId;
+}
+</script>
+<body onload="updateNavLink()">
+	<h1>Application Created!</h1>
+	<table>
+	<tr><td><label>Application ID</label></td><td><p th:text="${applnId}"></p></td></tr>
+	<tr><td><a id="aApplnUpdChk">Click here to see the application</a></td></tr>
+	<tr><td><a id="aNewJobCrt" href="/appManager/newAppln">Click here to create a new application</a></td></tr>
+	</table>
+	<table>
+		<tr height="5"/>
+		<tr height="5"/>
+		<tr><td><a href="/home">Home!</a></td><td><a href="/applnHome">Application Home!</a></td></tr>
+	</table>
+</body>
+</html>
